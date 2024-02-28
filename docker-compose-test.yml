@@ -11,7 +11,7 @@ services:
   item-service-tests:
     build:
       context: item-service
-      dockerfile: Dockerfile-test
+      dockerfile: Dockerfile-testdd
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5433/test
     depends_on:
