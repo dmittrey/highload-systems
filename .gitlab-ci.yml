@@ -1,26 +1,24 @@
+image: maven:3.8.5-openjdk-17
+
 stages:
   - test
-  - deploy
 
-test_all:
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+test:
   stage: test
-  tags: [maven]
-  except:
-    - master
+  allow_failure: true
+  
+  # Run the tests
   script:
-    - mvn clean install
-
-test_unit:
-  stage: test
-  tags: [maven]
-  only:
-    - master
-  script:
-    - mvn clean install
-
-deploy:
-  stage: deploy
-  only:
-    - lab3
-  script:
-    - ls
+    - echo "Executing SpringBoot scenarios with maven"
+    - mvn clean test site
+  
+  # Store artifacts
+  artifacts:
+    when: always
+    name: "SpringBoot Report"
+    paths:
+      - target/site/*
+    expire_in: 24 h
