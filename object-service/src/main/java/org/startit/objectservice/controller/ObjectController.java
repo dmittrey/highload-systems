@@ -14,9 +14,9 @@ import org.startit.objectservice.service.ObjectService;
 
 import java.util.NoSuchElementException;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/api/v1/objects", produces = {"application/json", "application/xml", "application/hal+json"})
+@RequestMapping("/api/v1/objects")
 public class ObjectController {
 
     private final ObjectService fileStorageService;
