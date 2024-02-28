@@ -3,8 +3,7 @@ stages:
   - deploy
 
 test_all:
-  stage:
-    - test
+  stage: test
   tags: [maven]
   except:
     - master
